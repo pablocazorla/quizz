@@ -1,0 +1,33 @@
+$main-pagination-item-width: 10px;
+$main-pagination-item-gap: 2px;
+
+// .main-pagination{
+
+// }
+
+.main-pagination-item{
+  display: inline-block;
+  width: $main-pagination-item-width;
+  height: $main-pagination-item-width;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #FFF;
+  margin-right: 0.8 * $main-pagination-item-width;
+  position: relative;
+
+  &.past{
+    background-color: #fff;
+  }
+  &.current{
+    &:after{
+      content: '';
+      display: block;
+      width: $main-pagination-item-width - (2 * $main-pagination-item-gap);
+      height: $main-pagination-item-width  - (2 * $main-pagination-item-gap);
+      position: absolute;
+      top: $main-pagination-item-gap;
+      left: $main-pagination-item-gap;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.view-enter {
+  opacity: 0;
+  z-index: 10;
+}
+.view-enter-active {
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.view-exit {
+  z-index: 1;
+  opacity: 1;
+}
+.view-exit-active {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/*
+
+
+
+
+
+classNames={{
+ appear: 'my-appear',
+ appearActive: 'my-active-appear',
+ appearDone: 'my-done-appear',
+ enter: 'my-enter',
+ enterActive: 'my-active-enter',
+ enterDone: 'my-done-enter',
+ exit: 'my-exit',
+ exitActive: 'my-active-exit',
+ exitDone: 'my-done-exit',
+}}
+
+
+<CSSTransition
+  in={showMessage}
+  timeout={300}
+  classNames="alert"
+  unmountOnExit
+  onEnter={() => setShowButton(false)}
+  onExited={() => setShowButton(true)}
+>
+CONTENIDO
+</CSSTransition>
+
+
+
+*/

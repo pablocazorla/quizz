@@ -1,0 +1,199 @@
+$line-width: 2px;
+$line-color: #FFF;
+
+// Horizontal
+.line-h-t,
+.line-h-m,
+.line-h-b {
+  position: absolute;  
+  left: 0;
+  width: 0;
+  height: $line-width;
+  background-color: $line-color;
+}
+.line-h-t{
+  top: 0;
+}
+.line-h-m{
+  bottom: $main-questbox-line-height;
+  margin-bottom: -0.5 * $line-width;
+}
+.line-h-b{
+  bottom: 0;
+}
+
+// Vertical
+.line-v-l,
+.line-v-r,
+.line-v-c {
+  position: absolute;  
+  top: 0;
+  width: $line-width;
+  height: 0;
+  background-color: $line-color;
+}
+.line-v-l{
+  left: 0;
+}
+.line-v-r{
+  right: 0;
+}
+.line-v-c{
+  top: auto;
+  bottom: 0;
+  left: 50%;
+  margin-left: -0.5 * $line-width;
+  width: $line-width;
+  height: 0;
+}
+
+// Animation In
+
+$line-animation-delay-in: 0.6s;
+$line-animation-delay-out: 0s;
+
+.main-questbox.in{
+  .line-h-t{
+    animation-name: lineAnimation_H_in;
+    animation-duration: 0.5s;  
+    animation-delay: $line-animation-delay-in;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+  .line-h-m{
+    animation-name: lineAnimation_H_in;
+    animation-duration: 0.5s;  
+    animation-delay: 0.3s + $line-animation-delay-in;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+  .line-h-b{
+    animation-name: lineAnimation_H_in;
+    animation-duration: 0.5s;  
+    animation-delay: 0.5s + $line-animation-delay-in;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+  
+  .line-v-l{
+    animation-name: lineAnimation_V_in;
+    animation-duration: 0.2s;  
+    animation-delay: $line-animation-delay-in;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+  .line-v-r{
+    animation-name: lineAnimation_V_in;
+    animation-duration: 0.2s;  
+    animation-delay: 0.4s + $line-animation-delay-in;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+  .line-v-c{
+    animation-name: lineAnimation_V_in_C;
+    animation-duration: 0.2s;  
+    animation-delay: 0.6s + $line-animation-delay-in;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes lineAnimation_H_in {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes lineAnimation_V_in {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes lineAnimation_V_in_C {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: $main-questbox-line-height;
+  }
+}
+
+// Animation Out
+.main-questbox.out{
+  .line-h-b{
+    animation-name: lineAnimation_H_out;
+    animation-duration: 0.5s;  
+    animation-delay: $line-animation-delay-out;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }  
+  .line-h-m{
+    animation-name: lineAnimation_H_out;
+    animation-duration: 0.5s;  
+    animation-delay: 0.3s + $line-animation-delay-out;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+  .line-h-t{
+    animation-name: lineAnimation_H_out;
+    animation-duration: 0.5s;  
+    animation-delay: 0.5s + $line-animation-delay-out;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+  
+  
+  .line-v-r{
+    animation-name: lineAnimation_V_out;
+    animation-duration: 0.2s;  
+    animation-delay: $line-animation-delay-out;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+  .line-v-c{
+    animation-name: lineAnimation_V_out_C;
+    animation-duration: 0.2s;  
+    animation-delay: 0.3s + $line-animation-delay-out;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+  .line-v-l{
+    animation-name: lineAnimation_V_out;
+    animation-duration: 0.2s;  
+    animation-delay: 0.4s + $line-animation-delay-out;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+  
+}
+
+@keyframes lineAnimation_H_out {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+@keyframes lineAnimation_V_out {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
+@keyframes lineAnimation_V_out_C {  
+  0% {
+    height: $main-questbox-line-height;
+  }
+  100% {
+    height: 0px;
+  }
+}
