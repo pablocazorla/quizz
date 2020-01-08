@@ -8,8 +8,12 @@ export default class TextType extends Component {
     this.state = {
       letterVisible:-1,
       textArray: []
-    }    
+    }
+    this.timeoutTypeWriter = null;
+    this.timeoutUntypeWriter = null;
+    this.timeoutTypeWriterDelay = null; 
   }
+  
   //static getDerivedStateFromProps(nextProps, prevState){
   //   if(nextProps.someValue!==prevState.someValue){
   //     return { someState: nextProps.someValue};
@@ -27,6 +31,9 @@ export default class TextType extends Component {
     }
   }
   untypeText = () => {
+    clearTimeout(this.timeoutTypeWriter);
+    clearTimeout(this.timeoutUntypeWriter);
+    clearTimeout(this.timeoutTypeWriterDelay);
     let {letterVisible/*,textArray*/} = this.state;
     let self = this;
 
@@ -39,13 +46,15 @@ export default class TextType extends Component {
         
         letterVisible--;
         self.setState({ letterVisible });
-        setTimeout(untypeWriter, speed);
+        self.timeoutTypeWriter = setTimeout(untypeWriter, speed);
       }
     }
     untypeWriter();
   }
   typeText = (newText) => {
-
+    clearTimeout(this.timeoutTypeWriter);
+    clearTimeout(this.timeoutUntypeWriter);
+    clearTimeout(this.timeoutTypeWriterDelay);
     let textArray = [];
 
     for(let i = 0; i < newText.length; i++){
@@ -65,20 +74,25 @@ export default class TextType extends Component {
       if (letterVisible < newText.length) {
         self.setState({ letterVisible });
         letterVisible++;
-        setTimeout(typeWriter, speed);
+        self.timeoutTypeWriter = setTimeout(typeWriter, speed);
       }else{
         if(self.props.onFinish){
           self.props.onFinish();
         }
       }
     }
-    setTimeout(typeWriter, delay);
+    this.timeoutTypeWriterDelay = setTimeout(typeWriter, delay);
   }
   componentDidMount(){
     const {text} = this.props;
     if(text && text !== ''){
       this.typeText(text);
     }
+  }
+  componentWillUnmount(){
+    clearTimeout(this.timeoutTypeWriter);
+    clearTimeout(this.timeoutUntypeWriter);
+    clearTimeout(this.timeoutTypeWriterDelay);
   }
   render() {
     const {textArray,letterVisible} = this.state;

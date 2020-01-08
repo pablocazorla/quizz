@@ -24,8 +24,9 @@ class QuestBoxVisual extends Component {
   componentDidUpdate(prevProps, prevState) {
     if(this.props.status === 'in' && prevProps.status !== 'in'){
       //Perform some operation here
-      this.setState({ status: 'in'});
-      this.setIn('in');
+      
+      setTimeout(this.setIn,500);
+      //this.setIn();
     }
     if(this.props.status === 'out' && prevProps.status !== 'out'){
       //Perform some operation here
@@ -33,6 +34,7 @@ class QuestBoxVisual extends Component {
     }
   }
   setIn = () => {
+    this.setState({ status: 'in'});
     const step = data[this.props.currentStep];
     this.setState({ textQuestion: step.question, answersArray: step.answers });
     const setEnabled = () => {

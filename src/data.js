@@ -10,7 +10,8 @@ const questions = [
         text: 'Direction',
         value: 2
       }
-    ]
+    ],
+    backgroundColor: '#b58888'
   },
   {
     question: 'How to work with a PC?',
@@ -27,7 +28,8 @@ const questions = [
         text: 'Harder',
         value: 3
       }
-    ]
+    ],
+    backgroundColor: '#88b1b5'
   },
   {
     question: 'Are you married?',
@@ -40,9 +42,9 @@ const questions = [
         text: 'No',
         value: 2
       }
-    ]
-  }
-  ,
+    ],
+    backgroundColor: '#8bb588'
+  },
   {
     question: 'Where are you from?',
     answers: [
@@ -58,7 +60,8 @@ const questions = [
         text: 'Middle',
         value: 3
       }
-    ]
+    ],
+    backgroundColor: '#b5af88'
   }
 ];
 

@@ -6,6 +6,7 @@ import actions from 'rdx/ui/actions';
 import Background from 'components/background';
 //import Pagination from 'components/pagination';
 import Questbox from './questbox';
+import data from 'data';
 
 class QuestVisual extends Component {
   constructor(props) {
@@ -32,8 +33,12 @@ class QuestVisual extends Component {
   }
   onClickAnswer = value => {
     this.setState({status: 'out'});
-    this.props.nextStep();
-
+    if(this.props.currentStep >= (data.length - 1)){
+      this.props.reset();
+    }else{
+      this.props.nextStep();
+    }
+    
     const initNextStep = () => {
       this.setState({status: 'in'});
     }
@@ -43,7 +48,9 @@ class QuestVisual extends Component {
     const {status} = this.state;
 
     return <div className="main-quest main-menu-white">
-      <Background/>
+      <Background
+        status={status}
+      />
       {/* <Menu
         tl={<a href="/">Creative Types</a>}
         tr={<a href="/">Share</a>}
@@ -64,10 +71,10 @@ const {
   nextStep
 } = actions;
 
-// function mapStateToProps(state) {
-//   const {openedSidebar} = state.Item;
-//   return {openedSidebar};
-// }
+function mapStateToProps(state) {
+  const {currentStep} = state.UI;
+  return {currentStep};
+}
 const mapDispatchToProps = dispatch => {
 	return {
     reset: () => {
@@ -80,8 +87,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const Quest = connect(
-  null,
-  //mapStateToProps,
+  mapStateToProps,
   mapDispatchToProps
 )(QuestVisual);
 
